@@ -50,7 +50,14 @@ const main = async () => {
     const recentSubs = childNodes[totalNodes - 1];
     const subItems = recentSubs.querySelectorAll(".ant-list-item");
     let finalSubs = [];
-    subItems.forEach((e) => finalSubs.push((e as HTMLElement).innerText));
+    subItems.forEach((e) => {
+      const text = (e as HTMLElement).innerText.split("\n");
+      const ques = text[0];
+      const time = text[1];
+      const lang = text[2];
+      const status = text[3];
+      finalSubs.push({ ques, time, lang, status });
+    });
     return finalSubs;
   });
 
